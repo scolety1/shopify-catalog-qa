@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "catalog-qa.catalog.v1",
+  "products": [
+    {
+      "handle": "invalid-product",
+      "status": "active",
+      "options": [],
+      "variants": [{ "id": "invalid-v1", "sku": "INVALID", "price": "free", "options": {} }],
+      "images": []
+    }
+  ]
+}

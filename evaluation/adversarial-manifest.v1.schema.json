@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://catalog-qa.local/schemas/catalog-qa.adversarial-manifest.v1.schema.json",
+  "title": "SHOPIFY CATALOG QA adversarial ground-truth manifest v1",
+  "type": "object",
+  "required": ["schemaVersion", "description", "scenarios"],
+  "properties": {
+    "schemaVersion": { "const": "catalog-qa.adversarial-manifest.v1" },
+    "description": { "type": "string", "minLength": 1 },
+    "scenarios": { "type": "array", "minItems": 75, "items": { "$ref": "#/$defs/scenario" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "target": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["catalog", "product", "variant", "image"] },
+        "sourceId": { "type": "string" },
+        "handle": { "type": "string" },
+        "mediaSource": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "finding": {
+      "type": "object",
+      "required": ["ruleId", "target", "severity", "rationale"],
+      "properties": {
+        "ruleId": { "type": "string", "minLength": 1 },
+        "target": { "$ref": "#/$defs/target" },
+        "severity": { "enum": ["high", "medium", "low"] },
+        "rationale": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "scenario": {
+      "type": "object",
+      "required": ["id", "family", "description", "tags", "rationale", "source", "expectedFindings"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "family": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "tags": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "rationale": { "type": "string", "minLength": 1 },
+        "source": {
+          "type": "object",
+          "required": ["format", "filename", "value"],
+          "properties": { "format": { "enum": ["catalog-qa-json-v1", "shopify-product-csv"] }, "filename": { "type": "string", "minLength": 1 }, "value": {} },
+          "additionalProperties": false
+        },
+        "expectedFindings": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+        "forbiddenRuleIds": { "type": "array", "items": { "type": "string" } },
+        "expectedDiagnostics": { "type": "object" },
+        "expectedFacts": { "type": "array" },
+        "policy": { "type": "object", "additionalProperties": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  }
+}

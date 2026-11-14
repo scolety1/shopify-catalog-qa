@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://catalog-qa.local/schemas/catalog-qa.catalog.v1.schema.json",
+  "title": "Catalog QA native catalog v1",
+  "type": "object",
+  "required": ["schemaVersion", "products"],
+  "properties": {
+    "schemaVersion": { "const": "catalog-qa.catalog.v1" },
+    "catalogId": { "type": "string" },
+    "products": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/product" }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "numericAmount": {
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string", "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$" },
+        { "type": "null" }
+      ]
+    },
+    "option": {
+      "type": "object",
+      "required": ["name", "values"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "values": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "image": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "anyOf": [
+            { "required": ["source"] },
+            { "required": ["url"] },
+            { "required": ["src"] }
+          ],
+          "properties": {
+            "source": { "type": "string", "minLength": 1 },
+            "url": { "type": "string", "minLength": 1 },
+            "src": { "type": "string", "minLength": 1 },
+            "altText": { "type": ["string", "null"] },
+            "alt": { "type": ["string", "null"] },
+            "position": { "type": ["integer", "null"] }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "variant": {
+      "type": "object",
+      "required": ["price"],
+      "properties": {
+        "id": { "type": ["string", "number"] },
+        "sourceVariantId": { "type": ["string", "number", "null"] },
+        "title": { "type": ["string", "null"] },
+        "sku": { "type": ["string", "null"] },
+        "barcode": { "type": ["string", "null"] },
+        "price": { "$ref": "#/$defs/numericAmount" },
+        "compareAtPrice": { "$ref": "#/$defs/numericAmount" },
+        "available": { "type": ["boolean", "null"] },
+        "imageSource": { "type": ["string", "null"] },
+        "options": {
+          "type": "object",
+          "additionalProperties": { "type": ["string", "null"] }
+        },
+        "optionValues": {
+          "type": "object",
+          "additionalProperties": { "type": ["string", "null"] }
+        },
+        "inventory": {
+          "type": "object",
+          "properties": {
+            "quantity": {
+              "oneOf": [
+                { "type": "number" },
+                { "type": "string", "pattern": "^-?(?:0|[1-9]\\d*)$" },
+                { "type": "null" }
+              ]
+            },
+            "tracked": { "type": ["boolean", "null"] },
+            "policy": { "enum": ["deny", "continue", null] },
+            "available": { "type": ["boolean", "null"] }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "product": {
+      "type": "object",
+      "required": ["title", "variants", "images"],
+      "properties": {
+        "id": { "type": ["string", "number"] },
+        "sourceProductId": { "type": ["string", "number", "null"] },
+        "handle": { "type": "string" },
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": ["string", "null"] },
+        "body": { "type": ["string", "null"] },
+        "status": { "enum": ["active", "draft", "archived", "unknown"] },
+        "publishedOnOnlineStore": { "type": ["boolean", "null"] },
+        "vendor": { "type": ["string", "null"] },
+        "productType": { "type": ["string", "null"] },
+        "type": { "type": ["string", "null"] },
+        "category": { "type": ["string", "null"] },
+        "tags": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
+        "collections": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
+        "options": { "type": "array", "items": { "$ref": "#/$defs/option" } },
+        "variants": { "type": "array", "items": { "$ref": "#/$defs/variant" } },
+        "images": { "type": "array", "items": { "$ref": "#/$defs/image" } }
+      },
+      "additionalProperties": true
+    }
+  }
+}

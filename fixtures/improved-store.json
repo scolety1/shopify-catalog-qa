@@ -1,0 +1,250 @@
+{
+  "schemaVersion": "catalog-qa.catalog.v1",
+  "name": "Improved Store",
+  "products": [
+    {
+      "sourceProductId": "gid://shopify/Product/2001",
+      "handle": "everyday-tote",
+      "title": "Everyday Tote",
+      "description": "A popular cotton tote with a refreshed merchant description; this unrelated edit must not break finding identity.",
+      "status": "active",
+      "vendor": "Market Street Goods",
+      "productType": "Bags",
+      "tags": [
+        "tote",
+        "bestseller",
+        "summer-refresh"
+      ],
+      "collections": [
+        "Everyday"
+      ],
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "Standard",
+            "Large"
+          ]
+        },
+        {
+          "name": "Color",
+          "values": [
+            "Natural",
+            "Ink"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/2101",
+          "title": "Standard / Natural",
+          "sku": "TOTE-STD-NAT",
+          "price": "28.00",
+          "compareAtPrice": "34.00",
+          "inventory": {
+            "quantity": 14,
+            "tracked": true,
+            "policy": "deny"
+          },
+          "available": true,
+          "options": {
+            "Size": "Standard",
+            "Color": "Natural"
+          }
+        },
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/2102",
+          "title": "Standard / Natural duplicate",
+          "sku": "TOTE-STD-INK",
+          "price": "30.00",
+          "compareAtPrice": "35.00",
+          "inventory": {
+            "quantity": 3,
+            "tracked": true,
+            "policy": "deny"
+          },
+          "available": true,
+          "options": {
+            "Size": " standard ",
+            "Color": "Ink"
+          }
+        },
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/2103",
+          "title": "Large / unknown finish",
+          "sku": "TOTE-L-INK",
+          "price": "-5.00",
+          "compareAtPrice": null,
+          "inventory": {
+            "quantity": 0,
+            "tracked": true,
+            "policy": "deny"
+          },
+          "available": false,
+          "options": {
+            "Size": "Large",
+            "Color": "Ink"
+          }
+        },
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/2104",
+          "title": "Large / Sage",
+          "sku": "TOTE-L-SAGE",
+          "price": "28.00",
+          "compareAtPrice": null,
+          "inventory": {
+            "quantity": 8,
+            "tracked": true,
+            "policy": "deny"
+          },
+          "available": true,
+          "options": {
+            "Size": "Large",
+            "Color": "Natural"
+          }
+        }
+      ],
+      "images": [
+        {
+          "source": "https://cdn.example.test/everyday-tote.jpg",
+          "altText": "Natural cotton Everyday Tote viewed from the front",
+          "position": 1
+        },
+        {
+          "source": "https://cdn.example.test/everyday-tote-detail.jpg",
+          "position": 2
+        }
+      ]
+    },
+    {
+      "sourceProductId": "gid://shopify/Product/2002",
+      "handle": "stoneware-pitcher",
+      "title": "Stoneware Pitcher",
+      "description": "Hand-finished stoneware pitcher.",
+      "status": "active",
+      "vendor": "Market Street Goods",
+      "productType": "Serveware",
+      "tags": [
+        "kitchen",
+        "ceramic"
+      ],
+      "options": [],
+      "variants": [
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/2201",
+          "title": "Default",
+          "sku": "PITCHER-STONE",
+          "price": "52.00",
+          "compareAtPrice": null,
+          "inventory": {
+            "quantity": 4,
+            "tracked": true,
+            "policy": "deny"
+          },
+          "available": true,
+          "options": {}
+        }
+      ],
+      "images": [
+        {
+          "source": "https://cdn.example.test/stoneware-pitcher.jpg",
+          "altText": "Hand-finished stoneware pitcher",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "sourceProductId": "gid://shopify/Product/2003",
+      "handle": "holiday-garland-archive",
+      "title": "Holiday Garland — archive candidate",
+      "description": "A seasonal listing retained as a draft after last year's campaign.",
+      "status": "draft",
+      "vendor": "Market Street Goods",
+      "productType": "Decor",
+      "tags": [
+        "seasonal"
+      ],
+      "options": [],
+      "variants": [
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/2301",
+          "title": "Default",
+          "sku": "GARLAND-6FT",
+          "price": "36.00",
+          "compareAtPrice": 0,
+          "inventory": {
+            "quantity": 0,
+            "tracked": true,
+            "policy": "deny"
+          },
+          "available": false,
+          "options": {}
+        }
+      ],
+      "images": []
+    },
+    {
+      "sourceProductId": "gid://shopify/Product/2004",
+      "handle": "linen-napkin-set",
+      "title": "Linen Napkin Set",
+      "description": "Four washed-linen napkins.",
+      "status": "active",
+      "vendor": "Market Street Goods",
+      "productType": "Table Linens",
+      "tags": [
+        "linen",
+        "dining"
+      ],
+      "options": [
+        {
+          "name": "Color",
+          "values": [
+            "Oat",
+            "Clay"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/2401",
+          "title": "Oat",
+          "sku": "NAPKIN-OAT",
+          "price": "42.00",
+          "compareAtPrice": null,
+          "inventory": {
+            "quantity": 22,
+            "tracked": true,
+            "policy": "deny"
+          },
+          "available": true,
+          "options": {
+            "Color": "Oat"
+          }
+        },
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/2402",
+          "title": "Clay",
+          "sku": "NAPKIN-CLAY",
+          "price": "42.00",
+          "compareAtPrice": null,
+          "inventory": {
+            "quantity": 10,
+            "tracked": true,
+            "policy": "deny"
+          },
+          "available": true,
+          "options": {
+            "Color": "Clay"
+          }
+        }
+      ],
+      "images": [
+        {
+          "source": "https://cdn.example.test/linen-napkins.jpg",
+          "altText": "Four folded linen napkins in Oat and Clay",
+          "position": 1
+        }
+      ]
+    }
+  ]
+}

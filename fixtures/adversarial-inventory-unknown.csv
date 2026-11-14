@@ -1,0 +1,2 @@
+Handle,Title,Status,Product ID,Variant ID,Variant SKU,Variant Price,Variant Inventory Qty,Variant Inventory Tracker,Variant Inventory Policy,Available,Image Src,Image Alt Text
+inventory-unknown,Inventory Unknown,active,adversarial-product-inventory,adversarial-inventory-v1,INVENTORY-ONE,10.00,0,mystery,deny,true,https://cdn.example.test/inventory-unknown.jpg,Inventory Unknown product

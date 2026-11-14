@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "catalog-qa.catalog.v1",
+  "name": "Healthy Store",
+  "products": [
+    {
+      "sourceProductId": "gid://shopify/Product/1001",
+      "handle": "ridge-camp-mug",
+      "title": "Ridge Camp Mug",
+      "description": "A durable enamel mug for coffee at camp or at home.",
+      "status": "active",
+      "vendor": "Northline Supply",
+      "productType": "Drinkware",
+      "category": "Home & Garden > Kitchen & Dining > Drinkware > Mugs",
+      "tags": ["camp", "enamel", "giftable"],
+      "collections": ["Camp Kitchen", "Gifts under $50"],
+      "options": [
+        { "name": "Color", "values": ["Canyon", "Pine"] }
+      ],
+      "variants": [
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/1101",
+          "title": "Canyon",
+          "sku": "MUG-CANYON",
+          "barcode": "850000000101",
+          "price": "24.00",
+          "compareAtPrice": null,
+          "inventory": { "quantity": 18, "tracked": true, "policy": "deny" },
+          "available": true,
+          "options": { "Color": "Canyon" }
+        },
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/1102",
+          "title": "Pine",
+          "sku": "MUG-PINE",
+          "barcode": "850000000102",
+          "price": "24.00",
+          "compareAtPrice": null,
+          "inventory": { "quantity": 7, "tracked": true, "policy": "deny" },
+          "available": true,
+          "options": { "Color": "Pine" }
+        }
+      ],
+      "images": [
+        { "source": "https://cdn.example.test/ridge-mug-main.jpg", "altText": "Ridge Camp Mug in Canyon red", "position": 1 },
+        { "source": "https://cdn.example.test/ridge-mug-detail.jpg", "altText": "Enamel rim and speckled finish detail", "position": 2 }
+      ]
+    },
+    {
+      "sourceProductId": "gid://shopify/Product/1002",
+      "handle": "workshop-apron",
+      "title": "Workshop Apron",
+      "description": "Waxed canvas apron with adjustable cross-back straps and reinforced pockets.",
+      "status": "active",
+      "vendor": "Northline Supply",
+      "productType": "Aprons",
+      "category": "Apparel & Accessories > Clothing > Uniforms",
+      "tags": ["canvas", "workshop"],
+      "collections": ["Workshop"],
+      "options": [
+        { "name": "Size", "values": ["Small / Medium", "Large / XL"] }
+      ],
+      "variants": [
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/1201",
+          "title": "Small / Medium",
+          "sku": "APRON-SM",
+          "price": 68,
+          "compareAtPrice": 78,
+          "inventory": { "quantity": 11, "tracked": true, "policy": "deny" },
+          "available": true,
+          "options": { "Size": "Small / Medium" }
+        },
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/1202",
+          "title": "Large / XL",
+          "sku": "APRON-LXL",
+          "price": 68,
+          "compareAtPrice": 78,
+          "inventory": { "quantity": 5, "tracked": true, "policy": "deny" },
+          "available": true,
+          "options": { "Size": "Large / XL" }
+        }
+      ],
+      "images": [
+        { "source": "https://cdn.example.test/workshop-apron.jpg", "altText": "Waxed canvas Workshop Apron shown from the front", "position": 1 }
+      ]
+    },
+    {
+      "sourceProductId": "gid://shopify/Product/1003",
+      "handle": "field-notes-set",
+      "title": "Field Notes Set",
+      "description": "Three pocket notebooks with dot-grid pages.",
+      "status": "draft",
+      "vendor": "Northline Supply",
+      "productType": "Stationery",
+      "tags": ["notebook", "draft-release"],
+      "options": [],
+      "variants": [
+        {
+          "sourceVariantId": "gid://shopify/ProductVariant/1301",
+          "title": "Default",
+          "sku": "NOTES-3PK",
+          "price": "18.00",
+          "compareAtPrice": null,
+          "inventory": { "quantity": 0, "tracked": true, "policy": "deny" },
+          "available": false,
+          "options": {}
+        }
+      ],
+      "images": [
+        { "source": "https://cdn.example.test/field-notes-set.jpg", "altText": "Three Field Notes notebooks with kraft covers", "position": 1 }
+      ]
+    }
+  ]
+}

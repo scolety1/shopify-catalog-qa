@@ -1,0 +1,2213 @@
+{
+  "schemaVersion": "catalog-qa.adversarial-evaluation.v1",
+  "label": "mission-3-baseline",
+  "manifestVersion": "catalog-qa.adversarial-manifest.v1",
+  "scenarioFamilies": 8,
+  "totalScenarios": 124,
+  "exactScenarioPasses": 99,
+  "exactScenarioPassRate": 0.798387,
+  "expectedFindings": 58,
+  "actualFindings": 70,
+  "truePositives": 45,
+  "falsePositives": 25,
+  "falseNegatives": 13,
+  "precision": 0.642857,
+  "recall": 0.775862,
+  "diagnosticFailures": 19,
+  "normalizationFailures": 5,
+  "ruleMetrics": [
+    {
+      "ruleId": "INVENTORY_AVAILABILITY_CONFLICT",
+      "truePositives": 2,
+      "falsePositives": 4,
+      "falseNegatives": 0,
+      "precision": 0.333333,
+      "recall": 1
+    },
+    {
+      "ruleId": "MEDIA_ALT_MISSING",
+      "truePositives": 2,
+      "falsePositives": 2,
+      "falseNegatives": 1,
+      "precision": 0.5,
+      "recall": 0.666667
+    },
+    {
+      "ruleId": "MEDIA_PRODUCT_NO_IMAGE",
+      "truePositives": 2,
+      "falsePositives": 5,
+      "falseNegatives": 0,
+      "precision": 0.285714,
+      "recall": 1
+    },
+    {
+      "ruleId": "PRICE_COMPARE_AT_BELOW_PRICE",
+      "truePositives": 1,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "ruleId": "PRICE_INVALID",
+      "truePositives": 4,
+      "falsePositives": 1,
+      "falseNegatives": 0,
+      "precision": 0.8,
+      "recall": 1
+    },
+    {
+      "ruleId": "PRICE_NEGATIVE",
+      "truePositives": 2,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "ruleId": "PRODUCT_HANDLE_DUPLICATE",
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 6,
+      "precision": null,
+      "recall": 0
+    },
+    {
+      "ruleId": "PRODUCT_ID_DUPLICATE",
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 2,
+      "precision": null,
+      "recall": 0
+    },
+    {
+      "ruleId": "PRODUCT_NO_VARIANTS",
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 1,
+      "precision": null,
+      "recall": 0
+    },
+    {
+      "ruleId": "PRODUCT_OPTION_VALUES_MISSING",
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 1,
+      "precision": null,
+      "recall": 0
+    },
+    {
+      "ruleId": "SKU_DUPLICATE",
+      "truePositives": 6,
+      "falsePositives": 2,
+      "falseNegatives": 0,
+      "precision": 0.75,
+      "recall": 1
+    },
+    {
+      "ruleId": "SKU_MISSING",
+      "truePositives": 6,
+      "falsePositives": 3,
+      "falseNegatives": 0,
+      "precision": 0.666667,
+      "recall": 1
+    },
+    {
+      "ruleId": "VARIANT_ID_DUPLICATE",
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 2,
+      "precision": null,
+      "recall": 0
+    },
+    {
+      "ruleId": "VARIANT_OPTION_DUPLICATE",
+      "truePositives": 12,
+      "falsePositives": 8,
+      "falseNegatives": 0,
+      "precision": 0.6,
+      "recall": 1
+    },
+    {
+      "ruleId": "VARIANT_OPTION_INCOMPLETE",
+      "truePositives": 4,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "ruleId": "VARIANT_OPTION_SCHEMA_MISMATCH",
+      "truePositives": 4,
+      "falsePositives": 0,
+      "falseNegatives": 0,
+      "precision": 1,
+      "recall": 1
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "sku-duplicate-across-products",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [
+        "SKU_DUPLICATE|variant:source:s1-v1|high",
+        "SKU_DUPLICATE|variant:source:s2-v1|high"
+      ],
+      "actualFindingKeys": [
+        "SKU_DUPLICATE|variant:source:s1-v1|high",
+        "SKU_DUPLICATE|variant:source:s2-v1|high"
+      ],
+      "truePositives": [
+        "SKU_DUPLICATE|variant:source:s1-v1|high",
+        "SKU_DUPLICATE|variant:source:s2-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-duplicate-same-product",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [
+        "SKU_DUPLICATE|variant:source:s3-v1|high",
+        "SKU_DUPLICATE|variant:source:s3-v2|high"
+      ],
+      "actualFindingKeys": [
+        "SKU_DUPLICATE|variant:source:s3-v1|high",
+        "SKU_DUPLICATE|variant:source:s3-v2|high"
+      ],
+      "truePositives": [
+        "SKU_DUPLICATE|variant:source:s3-v1|high",
+        "SKU_DUPLICATE|variant:source:s3-v2|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-case-distinct",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-whitespace-normalized",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [
+        "SKU_DUPLICATE|variant:source:s5-v1|high",
+        "SKU_DUPLICATE|variant:source:s5-v2|high"
+      ],
+      "actualFindingKeys": [
+        "SKU_DUPLICATE|variant:source:s5-v1|high",
+        "SKU_DUPLICATE|variant:source:s5-v2|high"
+      ],
+      "truePositives": [
+        "SKU_DUPLICATE|variant:source:s5-v1|high",
+        "SKU_DUPLICATE|variant:source:s5-v2|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-unicode-distinct",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-blank-active",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [
+        "SKU_MISSING|variant:source:s7-v1|medium"
+      ],
+      "actualFindingKeys": [
+        "SKU_MISSING|variant:source:s7-v1|medium"
+      ],
+      "truePositives": [
+        "SKU_MISSING|variant:source:s7-v1|medium"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-whitespace-active",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [
+        "SKU_MISSING|variant:source:s8-v1|medium"
+      ],
+      "actualFindingKeys": [
+        "SKU_MISSING|variant:source:s8-v1|medium"
+      ],
+      "truePositives": [
+        "SKU_MISSING|variant:source:s8-v1|medium"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-absent-draft",
+      "family": "sku",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "SKU_MISSING|variant:source:s9-v1|medium"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "SKU_MISSING|variant:source:s9-v1|medium"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding SKU_MISSING was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-absent-active",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [
+        "SKU_MISSING|variant:source:s10-v1|medium"
+      ],
+      "actualFindingKeys": [
+        "SKU_MISSING|variant:source:s10-v1|medium"
+      ],
+      "truePositives": [
+        "SKU_MISSING|variant:source:s10-v1|medium"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-two-blanks",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [
+        "SKU_MISSING|variant:source:s11-v1|medium",
+        "SKU_MISSING|variant:source:s11-v2|medium"
+      ],
+      "actualFindingKeys": [
+        "SKU_MISSING|variant:source:s11-v1|medium",
+        "SKU_MISSING|variant:source:s11-v2|medium"
+      ],
+      "truePositives": [
+        "SKU_MISSING|variant:source:s11-v1|medium",
+        "SKU_MISSING|variant:source:s11-v2|medium"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-one-missing-among-valid",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [
+        "SKU_MISSING|variant:source:s12-v2|medium"
+      ],
+      "actualFindingKeys": [
+        "SKU_MISSING|variant:source:s12-v2|medium"
+      ],
+      "truePositives": [
+        "SKU_MISSING|variant:source:s12-v2|medium"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-similar-not-equal",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-numeric-looking",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-very-long",
+      "family": "sku",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "sku-archived-active-reuse",
+      "family": "sku",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "SKU_DUPLICATE|variant:source:s16a-v1|high",
+        "SKU_DUPLICATE|variant:source:s16b-v1|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "SKU_DUPLICATE|variant:source:s16a-v1|high",
+        "SKU_DUPLICATE|variant:source:s16b-v1|high"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding SKU_DUPLICATE was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-valid-one",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-valid-two",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-valid-three",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-exact-duplicate",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o4-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o4-v2|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o4-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o4-v2|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o4-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o4-v2|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-whitespace-duplicate",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o5-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o5-v2|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o5-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o5-v2|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o5-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o5-v2|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-case-distinct",
+      "family": "options",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o6-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o6-v2|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o6-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o6-v2|high"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding VARIANT_OPTION_DUPLICATE was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-missing-second",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o7-v1|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o7-v1|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o7-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-unknown-name",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:o8-v1|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:o8-v1|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:o8-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-value-outside-schema",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:o9-v1|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:o9-v1|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:o9-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-punctuation",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-unicode",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-unicode-not-folded",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-default-simple",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-duplicate-default",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o14-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o14-v2|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o14-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o14-v2|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:o14-v1|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:o14-v2|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-empty-declared-values",
+      "family": "options",
+      "passed": false,
+      "expectedFindingKeys": [
+        "PRODUCT_OPTION_VALUES_MISSING|product:source:o15|high"
+      ],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [
+        "PRODUCT_OPTION_VALUES_MISSING|product:source:o15|high"
+      ],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "option-no-viable-variant",
+      "family": "options",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o16-v1|high",
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o16-v2|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o16-v1|high",
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o16-v2|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o16-v1|high",
+        "VARIANT_OPTION_INCOMPLETE|variant:source:o16-v2|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-positive",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-zero",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-negative",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [
+        "PRICE_NEGATIVE|variant:source:pr3-v1|high"
+      ],
+      "actualFindingKeys": [
+        "PRICE_NEGATIVE|variant:source:pr3-v1|high"
+      ],
+      "truePositives": [
+        "PRICE_NEGATIVE|variant:source:pr3-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-malformed",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [
+        "PRICE_INVALID|variant:source:pr4-v1|high"
+      ],
+      "actualFindingKeys": [
+        "PRICE_INVALID|variant:source:pr4-v1|high"
+      ],
+      "truePositives": [
+        "PRICE_INVALID|variant:source:pr4-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "JSON_SCHEMA_ONEOF"
+      ]
+    },
+    {
+      "id": "price-currency-symbol",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [
+        "PRICE_INVALID|variant:source:pr5-v1|high"
+      ],
+      "actualFindingKeys": [
+        "PRICE_INVALID|variant:source:pr5-v1|high"
+      ],
+      "truePositives": [
+        "PRICE_INVALID|variant:source:pr5-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "JSON_SCHEMA_ONEOF"
+      ]
+    },
+    {
+      "id": "price-comma-decimal",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [
+        "PRICE_INVALID|variant:source:pr6-v1|high"
+      ],
+      "actualFindingKeys": [
+        "PRICE_INVALID|variant:source:pr6-v1|high"
+      ],
+      "truePositives": [
+        "PRICE_INVALID|variant:source:pr6-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "JSON_SCHEMA_ONEOF"
+      ]
+    },
+    {
+      "id": "price-compare-above",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-compare-equal",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-compare-below",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [
+        "PRICE_COMPARE_AT_BELOW_PRICE|variant:source:pr9-v1|medium"
+      ],
+      "actualFindingKeys": [
+        "PRICE_COMPARE_AT_BELOW_PRICE|variant:source:pr9-v1|medium"
+      ],
+      "truePositives": [
+        "PRICE_COMPARE_AT_BELOW_PRICE|variant:source:pr9-v1|medium"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-compare-absent",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-compare-zero",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-legitimate-difference",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-legitimate-same",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-large",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-tiny",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-outer-whitespace",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "JSON_SCHEMA_ONEOF"
+      ]
+    },
+    {
+      "id": "price-missing",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [
+        "PRICE_INVALID|variant:source:pr17-v1|high"
+      ],
+      "actualFindingKeys": [
+        "PRICE_INVALID|variant:source:pr17-v1|high"
+      ],
+      "truePositives": [
+        "PRICE_INVALID|variant:source:pr17-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "price-negative-compare",
+      "family": "pricing",
+      "passed": true,
+      "expectedFindingKeys": [
+        "PRICE_NEGATIVE|variant:source:pr18-v1|high"
+      ],
+      "actualFindingKeys": [
+        "PRICE_NEGATIVE|variant:source:pr18-v1|high"
+      ],
+      "truePositives": [
+        "PRICE_NEGATIVE|variant:source:pr18-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-positive-available",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-zero-unavailable",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-negative-continue",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-negative-deny-available",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i4-v1|high"
+      ],
+      "actualFindingKeys": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i4-v1|high"
+      ],
+      "truePositives": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i4-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-zero-deny-available",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i5-v1|high"
+      ],
+      "actualFindingKeys": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i5-v1|high"
+      ],
+      "truePositives": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i5-v1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-untracked",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-tracker-unknown",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-quantity-malformed",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "JSON_SCHEMA_ONEOF",
+        "JSON_INVENTORY_QUANTITY_INVALID"
+      ]
+    },
+    {
+      "id": "inventory-draft-conflict",
+      "family": "inventory",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i9-v1|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i9-v1|high"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding INVENTORY_AVAILABILITY_CONFLICT was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-archived-conflict",
+      "family": "inventory",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i10-v1|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:i10-v1|high"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding INVENTORY_AVAILABILITY_CONFLICT was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-no-availability",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-no-policy",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-no-quantity",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "inventory-positive-unavailable",
+      "family": "inventory",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-active-none",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m1|high"
+      ],
+      "actualFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m1|high"
+      ],
+      "truePositives": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m1|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-draft-none",
+      "family": "media",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m2|low"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m2|low"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding MEDIA_PRODUCT_NO_IMAGE was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-archived-none",
+      "family": "media",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m3|low"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m3|low"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding MEDIA_PRODUCT_NO_IMAGE was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-one-valid",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-multiple-valid",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-blank-url",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m6|high"
+      ],
+      "actualFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m6|high"
+      ],
+      "truePositives": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m6|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-alt-missing",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [
+        "MEDIA_ALT_MISSING|image:media:m7.jpg|medium"
+      ],
+      "actualFindingKeys": [
+        "MEDIA_ALT_MISSING|image:media:m7.jpg|medium"
+      ],
+      "truePositives": [
+        "MEDIA_ALT_MISSING|image:media:m7.jpg|medium"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-alt-whitespace",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [
+        "MEDIA_ALT_MISSING|image:media:m8.jpg|medium"
+      ],
+      "actualFindingKeys": [
+        "MEDIA_ALT_MISSING|image:media:m8.jpg|medium"
+      ],
+      "truePositives": [
+        "MEDIA_ALT_MISSING|image:media:m8.jpg|medium"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-alt-descriptive",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-repeat-url",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-variant-image-only",
+      "family": "media",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m11|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:m11|high"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding MEDIA_PRODUCT_NO_IMAGE was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-inaccessible-looking",
+      "family": "media",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-draft-alt-missing",
+      "family": "media",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "MEDIA_ALT_MISSING|image:media:m13.jpg|low"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "MEDIA_ALT_MISSING|image:media:m13.jpg|low"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding MEDIA_ALT_MISSING was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "media-unknown-status-alt",
+      "family": "media",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "MEDIA_ALT_MISSING|image:media:m14.jpg|low"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "MEDIA_ALT_MISSING|image:media:m14.jpg|low"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding MEDIA_ALT_MISSING was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "status-active",
+      "family": "status",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "status-draft",
+      "family": "status",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "status-archived",
+      "family": "status",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "status-unknown",
+      "family": "status",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "JSON_SCHEMA_ENUM"
+      ]
+    },
+    {
+      "id": "status-blank",
+      "family": "status",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "JSON_SCHEMA_ENUM"
+      ]
+    },
+    {
+      "id": "status-case-normalized",
+      "family": "status",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "JSON_SCHEMA_ENUM"
+      ]
+    },
+    {
+      "id": "status-unknown-no-image",
+      "family": "status",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:st7|low"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:st7|low"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding MEDIA_PRODUCT_NO_IMAGE was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "status-draft-missing-sku",
+      "family": "status",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "SKU_MISSING|variant:source:st8-v1|medium"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "SKU_MISSING|variant:source:st8-v1|medium"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Explicitly forbidden finding SKU_MISSING was emitted"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "identity-duplicate-handle",
+      "family": "product-integrity",
+      "passed": false,
+      "expectedFindingKeys": [
+        "PRODUCT_HANDLE_DUPLICATE|product:source:d1|high",
+        "PRODUCT_HANDLE_DUPLICATE|product:source:d2|high"
+      ],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [
+        "PRODUCT_HANDLE_DUPLICATE|product:source:d1|high",
+        "PRODUCT_HANDLE_DUPLICATE|product:source:d2|high"
+      ],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "identity-handle-case-collision",
+      "family": "product-integrity",
+      "passed": false,
+      "expectedFindingKeys": [
+        "PRODUCT_HANDLE_DUPLICATE|product:source:d3|high",
+        "PRODUCT_HANDLE_DUPLICATE|product:source:d4|high"
+      ],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [
+        "PRODUCT_HANDLE_DUPLICATE|product:source:d3|high",
+        "PRODUCT_HANDLE_DUPLICATE|product:source:d4|high"
+      ],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "identity-distinct-handles",
+      "family": "product-integrity",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "identity-active-no-variants",
+      "family": "product-integrity",
+      "passed": false,
+      "expectedFindingKeys": [
+        "PRODUCT_NO_VARIANTS|product:source:d7|high"
+      ],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [
+        "PRODUCT_NO_VARIANTS|product:source:d7|high"
+      ],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "identity-draft-no-variants",
+      "family": "product-integrity",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "identity-duplicate-product-id",
+      "family": "product-integrity",
+      "passed": false,
+      "expectedFindingKeys": [
+        "PRODUCT_ID_DUPLICATE|product:source:same-id|high",
+        "PRODUCT_ID_DUPLICATE|product:source:same-id|high"
+      ],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [
+        "PRODUCT_ID_DUPLICATE|product:source:same-id|high",
+        "PRODUCT_ID_DUPLICATE|product:source:same-id|high"
+      ],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "identity-duplicate-variant-id",
+      "family": "product-integrity",
+      "passed": false,
+      "expectedFindingKeys": [
+        "VARIANT_ID_DUPLICATE|variant:source:same-v|high",
+        "VARIANT_ID_DUPLICATE|variant:source:same-v|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:same-v|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:same-v|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:same-v|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:same-v|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:same-v|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:same-v|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [
+        "VARIANT_ID_DUPLICATE|variant:source:same-v|high",
+        "VARIANT_ID_DUPLICATE|variant:source:same-v|high"
+      ],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-image-between-variants",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-images-after-final-variant",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-repeated-identical-product-data",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-repeated-conflicting-title",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv6|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv7|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv6|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv7|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv6|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv7|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "CSV_PRODUCT_FIELD_CONFLICT"
+      ]
+    },
+    {
+      "id": "csv-same-handle-separated",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-handle-first-row-only",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-handle-all-rows",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-blank-handle-new-title",
+      "family": "csv-reconstruction",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv15|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv16|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv15|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv16|high"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Missing required diagnostic CSV_HANDLE_DERIVED"
+      ],
+      "normalizationFailures": [
+        "metadata.normalizedCounts.products: expected 2, received 1"
+      ],
+      "importerDiagnostics": [
+        "CSV_PRODUCT_FIELD_CONFLICT"
+      ]
+    },
+    {
+      "id": "csv-legacy-current-aliases",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "CSV_HEADER_ALIAS_CONFLICT",
+        "CSV_UNKNOWN_COLUMNS_PRESERVED"
+      ]
+    },
+    {
+      "id": "csv-duplicate-columns",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "CSV_DUPLICATE_HEADERS"
+      ]
+    },
+    {
+      "id": "csv-extension-columns",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "CSV_EXTENSION_COLUMNS_PRESERVED"
+      ]
+    },
+    {
+      "id": "csv-bom",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-quoted-newline",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-embedded-comma",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-escaped-quote",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-crlf",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-lf",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-no-final-newline",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-default-title",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-duplicate-default",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv23|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv24|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv23|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv24|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv23|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv24|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-option2-without-option1",
+      "family": "csv-reconstruction",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Missing required diagnostic CSV_OPTION_POSITION_GAP"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-option3-without-option2",
+      "family": "csv-reconstruction",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Missing required diagnostic CSV_OPTION_POSITION_GAP"
+      ],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-option-name-conflict",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:cv28|high",
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:cv28|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:cv28|high",
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:cv28|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_INCOMPLETE|variant:source:cv28|high",
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:cv28|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "CSV_OPTION_SCHEMA_CONFLICT"
+      ]
+    },
+    {
+      "id": "csv-option-names-reordered",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:cv30|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:cv30|high"
+      ],
+      "truePositives": [
+        "VARIANT_OPTION_SCHEMA_MISMATCH|variant:source:cv30|high"
+      ],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "CSV_OPTION_SCHEMA_CONFLICT",
+        "CSV_OPTION_SCHEMA_CONFLICT"
+      ]
+    },
+    {
+      "id": "csv-inventory-only-continuation",
+      "family": "csv-reconstruction",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:local:product:cp22:variant:3|high",
+        "PRICE_INVALID|variant:local:product:cp22:variant:3|high",
+        "VARIANT_OPTION_DUPLICATE|variant:local:product:cp22:variant:3|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv31|high",
+        "SKU_MISSING|variant:local:product:cp22:variant:3|medium"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:local:product:cp22:variant:3|high",
+        "PRICE_INVALID|variant:local:product:cp22:variant:3|high",
+        "VARIANT_OPTION_DUPLICATE|variant:local:product:cp22:variant:3|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv31|high",
+        "SKU_MISSING|variant:local:product:cp22:variant:3|medium"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Missing required diagnostic CSV_PARTIAL_VARIANT_ROW_SKIPPED"
+      ],
+      "normalizationFailures": [
+        "metadata.normalizedCounts.variants: expected 1, received 2"
+      ],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-unknown-inventory-tracker",
+      "family": "csv-reconstruction",
+      "passed": false,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:cv32|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "INVENTORY_AVAILABILITY_CONFLICT|variant:source:cv32|high"
+      ],
+      "falseNegatives": [],
+      "diagnosticFailures": [
+        "Missing required diagnostic CSV_INVENTORY_TRACKER_UNKNOWN",
+        "Explicitly forbidden finding INVENTORY_AVAILABILITY_CONFLICT was emitted"
+      ],
+      "normalizationFailures": [
+        "catalog.products.0.variants.0.inventoryTracked: expected null, received true"
+      ],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-distinct-products-same-handle",
+      "family": "csv-reconstruction",
+      "passed": false,
+      "expectedFindingKeys": [
+        "PRODUCT_HANDLE_DUPLICATE|product:source:cp24|high",
+        "PRODUCT_HANDLE_DUPLICATE|product:source:cp25|high"
+      ],
+      "actualFindingKeys": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv33|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv34|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv33|high",
+        "VARIANT_OPTION_DUPLICATE|variant:source:cv34|high"
+      ],
+      "falseNegatives": [
+        "PRODUCT_HANDLE_DUPLICATE|product:source:cp24|high",
+        "PRODUCT_HANDLE_DUPLICATE|product:source:cp25|high"
+      ],
+      "diagnosticFailures": [
+        "Missing required diagnostic CSV_PRODUCT_HANDLE_COLLISION"
+      ],
+      "normalizationFailures": [
+        "metadata.normalizedCounts.products: expected 2, received 1"
+      ],
+      "importerDiagnostics": [
+        "CSV_PRODUCT_FIELD_CONFLICT"
+      ]
+    },
+    {
+      "id": "csv-status-on-first-row",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-status-conflict",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "CSV_PRODUCT_STATUS_CONFLICT"
+      ]
+    },
+    {
+      "id": "csv-malformed-status",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": [
+        "CSV_STATUS_UNKNOWN"
+      ]
+    },
+    {
+      "id": "csv-case-status",
+      "family": "csv-reconstruction",
+      "passed": true,
+      "expectedFindingKeys": [],
+      "actualFindingKeys": [],
+      "truePositives": [],
+      "falsePositives": [],
+      "falseNegatives": [],
+      "diagnosticFailures": [],
+      "normalizationFailures": [],
+      "importerDiagnostics": []
+    },
+    {
+      "id": "csv-image-only-variant-url",
+      "family": "csv-reconstruction",
+      "passed": false,
+      "expectedFindingKeys": [
+        "MEDIA_ALT_MISSING|image:media:variant-only.jpg|medium"
+      ],
+      "actualFindingKeys": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:cp30|high"
+      ],
+      "truePositives": [],
+      "falsePositives": [
+        "MEDIA_PRODUCT_NO_IMAGE|product:source:cp30|high"
+      ],
+      "falseNegatives": [
+        "MEDIA_ALT_MISSING|image:media:variant-only.jpg|medium"
+      ],
+      "diagnosticFailures": [],
+      "normalizationFailures": [
+        "metadata.normalizedCounts: expected {\"products\":1,\"variants\":1,\"images\":1}, received {\"products\":1,\"variants\":1,\"images\":0}"
+      ],
+      "importerDiagnostics": []
+    }
+  ],
+  "gates": {
+    "zeroFalsePositives": false,
+    "zeroFalseNegatives": false,
+    "allScenariosExact": false,
+    "passed": false
+  }
+}

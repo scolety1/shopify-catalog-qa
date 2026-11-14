@@ -1,0 +1,18 @@
+/node_modules
+/coverage
+/dist
+/.vite
+/outputs
+/work
+.env*
+*.tsbuildinfo
+npm-debug.log*
+/.codex-*.log
+.DS_Store
+
+# Generated local verification outputs
+artifacts/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example

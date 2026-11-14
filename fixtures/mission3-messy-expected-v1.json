@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "catalog-qa.mission3-messy-expected.v1",
+  "engineCommit": "cbf31de53334fb2cdf99c53135b5dd5b57a2375b",
+  "fixture": "messy-store.json",
+  "findingCount": 17,
+  "findings": [
+    { "ruleId": "INVENTORY_AVAILABILITY_CONFLICT", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103" },
+    { "ruleId": "MEDIA_PRODUCT_NO_IMAGE", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2002" },
+    { "ruleId": "PRICE_INVALID", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2104" },
+    { "ruleId": "PRICE_NEGATIVE", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103" },
+    { "ruleId": "SKU_DUPLICATE", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2101" },
+    { "ruleId": "SKU_DUPLICATE", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102" },
+    { "ruleId": "VARIANT_OPTION_DUPLICATE", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2101" },
+    { "ruleId": "VARIANT_OPTION_DUPLICATE", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102" },
+    { "ruleId": "VARIANT_OPTION_INCOMPLETE", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103" },
+    { "ruleId": "VARIANT_OPTION_SCHEMA_MISMATCH", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103" },
+    { "ruleId": "VARIANT_OPTION_SCHEMA_MISMATCH", "severity": "high", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2104" },
+    { "ruleId": "MEDIA_ALT_MISSING", "severity": "medium", "affectedEntityId": "product:gid-shopify-product-2001:image:1" },
+    { "ruleId": "MEDIA_ALT_MISSING", "severity": "medium", "affectedEntityId": "product:gid-shopify-product-2001:image:2" },
+    { "ruleId": "PRICE_COMPARE_AT_BELOW_PRICE", "severity": "medium", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102" },
+    { "ruleId": "SKU_MISSING", "severity": "medium", "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103" },
+    { "ruleId": "SKU_MISSING", "severity": "medium", "affectedEntityId": "product:gid-shopify-product-2002:variant:gid-shopify-productvariant-2201" },
+    { "ruleId": "MEDIA_PRODUCT_NO_IMAGE", "severity": "low", "affectedEntityId": "product:gid-shopify-product-2003" }
+  ]
+}

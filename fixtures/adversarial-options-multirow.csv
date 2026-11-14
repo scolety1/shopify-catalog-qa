@@ -1,0 +1,3 @@
+Handle,Title,Status,Product ID,Variant ID,Variant SKU,Variant Price,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Image Src,Image Alt Text
+schema-attack,Schema Attack,active,adversarial-product-options,adversarial-option-v1,OPTION-ONE,10.00,Size,S,Color,Blue,https://cdn.example.test/schema-attack.jpg,Schema Attack product
+schema-attack,,,adversarial-product-options,adversarial-option-v2,OPTION-TWO,10.00,Color,Red,Size,M,,

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "catalog-qa.catalog.v1",
+  "catalogId": "example-valid-v1",
+  "products": [
+    {
+      "id": "p-example",
+      "handle": "example-mug",
+      "title": "Example Mug",
+      "status": "active",
+      "vendor": "Catalog QA Examples",
+      "options": [],
+      "variants": [
+        {
+          "id": "v-example",
+          "sku": "EXAMPLE-MUG",
+          "price": 18,
+          "compareAtPrice": null,
+          "options": {},
+          "inventory": { "quantity": 4, "tracked": true, "policy": "deny" },
+          "available": true
+        }
+      ],
+      "images": [
+        { "source": "https://cdn.example.test/example-mug.jpg", "altText": "Example Mug", "position": 1 }
+      ]
+    }
+  ]
+}

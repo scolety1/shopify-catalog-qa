@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": "catalog-qa.audit-report.v1",
+  "generatedAt": "2026-08-12T06:41:19.733Z",
+  "application": {
+    "name": "Shopify Catalog QA",
+    "version": "0.2.0",
+    "auditEngineVersion": "1.1.0"
+  },
+  "safety": {
+    "readOnly": true,
+    "storeChangesPerformed": false,
+    "statement": "This report records a read-only audit. No Shopify store or source catalog data was changed."
+  },
+  "source": {
+    "filename": "messy-store.json",
+    "format": "catalog-qa-json-v1",
+    "adapterId": "catalog-qa-json-v1",
+    "adapterVersion": 1,
+    "nativeSchemaVersion": "catalog-qa.catalog.v1",
+    "fingerprint": "fnv1a32:ddfdf5fd"
+  },
+  "catalogSummary": {
+    "products": 4,
+    "variants": 8,
+    "images": 3,
+    "findings": 17,
+    "severity": {
+      "high": 11,
+      "medium": 5,
+      "low": 1
+    }
+  },
+  "importDiagnostics": {
+    "summary": {
+      "info": 0,
+      "warning": 0,
+      "error": 1
+    },
+    "items": [
+      {
+        "level": "error",
+        "type": "validation",
+        "code": "JSON_SCHEMA_ONEOF",
+        "message": "Native JSON v1 validation failed: must match exactly one schema in oneOf.",
+        "path": "$.products[0].variants[3].price"
+      }
+    ],
+    "extensionColumns": [],
+    "ignoredColumns": []
+  },
+  "rulesExecuted": [
+    {
+      "id": "SKU_DUPLICATE",
+      "version": 1
+    },
+    {
+      "id": "SKU_MISSING",
+      "version": 1
+    },
+    {
+      "id": "MEDIA_PRODUCT_NO_IMAGE",
+      "version": 1
+    },
+    {
+      "id": "MEDIA_ALT_MISSING",
+      "version": 1
+    },
+    {
+      "id": "VARIANT_OPTION_DUPLICATE",
+      "version": 1
+    },
+    {
+      "id": "VARIANT_OPTION_INCOMPLETE",
+      "version": 1
+    },
+    {
+      "id": "VARIANT_OPTION_SCHEMA_MISMATCH",
+      "version": 1
+    },
+    {
+      "id": "PRICE_INVALID",
+      "version": 1
+    },
+    {
+      "id": "PRICE_NEGATIVE",
+      "version": 1
+    },
+    {
+      "id": "PRICE_COMPARE_AT_BELOW_PRICE",
+      "version": 1
+    },
+    {
+      "id": "INVENTORY_AVAILABILITY_CONFLICT",
+      "version": 1
+    }
+  ],
+  "findings": [
+    {
+      "id": "INVENTORY_AVAILABILITY_CONFLICT:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "ruleId": "INVENTORY_AVAILABILITY_CONFLICT",
+      "severity": "high",
+      "category": "Inventory",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote / Large / unknown finish is marked available while tracked stock is not positive and overselling is denied.",
+      "evidence": [
+        {
+          "label": "Inventory quantity",
+          "value": 0
+        },
+        {
+          "label": "Inventory tracked",
+          "value": true
+        },
+        {
+          "label": "Inventory policy",
+          "value": "deny"
+        },
+        {
+          "label": "Available",
+          "value": true
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[2]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2103",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2103",
+            "title": "Large / unknown finish",
+            "sku": "",
+            "price": "-4.00",
+            "compareAtPrice": null,
+            "inventory": {
+              "quantity": 0,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Large",
+              "Color": "",
+              "Finish": "Gloss"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Reconcile the inventory quantity and availability state, or intentionally change the inventory policy if overselling is allowed."
+    },
+    {
+      "id": "MEDIA_PRODUCT_NO_IMAGE:product:gid-shopify-product-2002",
+      "ruleId": "MEDIA_PRODUCT_NO_IMAGE",
+      "severity": "high",
+      "category": "Media",
+      "classification": "deterministic",
+      "affectedEntityType": "product",
+      "affectedEntityId": "product:gid-shopify-product-2002",
+      "productId": "product:gid-shopify-product-2002",
+      "productTitle": "Stoneware Pitcher",
+      "message": "Stoneware Pitcher has no product images.",
+      "evidence": [
+        {
+          "label": "Image count",
+          "value": 0
+        },
+        {
+          "label": "Product status",
+          "value": "active"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[1]",
+          "sourceProductId": "gid://shopify/Product/2002",
+          "rawValues": {
+            "sourceProductId": "gid://shopify/Product/2002",
+            "handle": "stoneware-pitcher",
+            "title": "Stoneware Pitcher",
+            "description": "Hand-finished stoneware pitcher.",
+            "status": "active",
+            "vendor": "Market Street Goods",
+            "productType": "Serveware",
+            "tags": [
+              "kitchen",
+              "ceramic"
+            ],
+            "options": [],
+            "variants": [
+              {
+                "sourceVariantId": "gid://shopify/ProductVariant/2201",
+                "title": "Default",
+                "sku": null,
+                "price": "52.00",
+                "compareAtPrice": null,
+                "inventory": {
+                  "quantity": 4,
+                  "tracked": true,
+                  "policy": "deny"
+                },
+                "available": true,
+                "options": {}
+              }
+            ],
+            "images": []
+          }
+        }
+      ],
+      "recommendedFix": "Add at least one accurate product image and re-run the audit. Draft or archived items can be addressed before activation."
+    },
+    {
+      "id": "PRICE_INVALID:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2104",
+      "ruleId": "PRICE_INVALID",
+      "severity": "high",
+      "category": "Price",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2104",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote / Large / Sage does not have a valid numeric price.",
+      "evidence": [
+        {
+          "label": "Raw price",
+          "value": "twenty eight"
+        },
+        {
+          "label": "Normalization result",
+          "value": "invalid"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[3]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2104",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2104",
+            "title": "Large / Sage",
+            "sku": "TOTE-L-SAGE",
+            "price": "twenty eight",
+            "compareAtPrice": null,
+            "inventory": {
+              "quantity": 8,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Large",
+              "Color": "Sage"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Replace the raw price with a valid numeric amount using the store currency's expected decimal format."
+    },
+    {
+      "id": "PRICE_NEGATIVE:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "ruleId": "PRICE_NEGATIVE",
+      "severity": "high",
+      "category": "Price",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote / Large / unknown finish contains a negative price amount.",
+      "evidence": [
+        {
+          "label": "Negative values",
+          "value": "price=-4"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[2]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2103",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2103",
+            "title": "Large / unknown finish",
+            "sku": "",
+            "price": "-4.00",
+            "compareAtPrice": null,
+            "inventory": {
+              "quantity": 0,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Large",
+              "Color": "",
+              "Finish": "Gloss"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Correct the negative amount to the intended non-negative selling or compare-at price."
+    },
+    {
+      "id": "SKU_DUPLICATE:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2101:TOTE-STD-NAT",
+      "ruleId": "SKU_DUPLICATE",
+      "severity": "high",
+      "category": "SKU",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2101",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "SKU “TOTE-STD-NAT” is assigned to 2 variants.",
+      "evidence": [
+        {
+          "label": "Duplicate SKU",
+          "value": "TOTE-STD-NAT"
+        },
+        {
+          "label": "Conflicting variants",
+          "value": "Everyday Tote / Standard / Natural • Everyday Tote / Standard / Natural duplicate"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[0]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2101",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2101",
+            "title": "Standard / Natural",
+            "sku": "TOTE-STD-NAT",
+            "price": "28.00",
+            "compareAtPrice": "34.00",
+            "inventory": {
+              "quantity": 14,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Standard",
+              "Color": "Natural"
+            }
+          }
+        },
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[1]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2102",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2102",
+            "title": "Standard / Natural duplicate",
+            "sku": "TOTE-STD-NAT",
+            "price": "30.00",
+            "compareAtPrice": "20.00",
+            "inventory": {
+              "quantity": 3,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": " standard ",
+              "Color": "NATURAL"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Assign a unique SKU to each conflicting variant, then re-run the audit to confirm the collision is gone."
+    },
+    {
+      "id": "SKU_DUPLICATE:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102:TOTE-STD-NAT",
+      "ruleId": "SKU_DUPLICATE",
+      "severity": "high",
+      "category": "SKU",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "SKU “TOTE-STD-NAT” is assigned to 2 variants.",
+      "evidence": [
+        {
+          "label": "Duplicate SKU",
+          "value": "TOTE-STD-NAT"
+        },
+        {
+          "label": "Conflicting variants",
+          "value": "Everyday Tote / Standard / Natural • Everyday Tote / Standard / Natural duplicate"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[0]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2101",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2101",
+            "title": "Standard / Natural",
+            "sku": "TOTE-STD-NAT",
+            "price": "28.00",
+            "compareAtPrice": "34.00",
+            "inventory": {
+              "quantity": 14,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Standard",
+              "Color": "Natural"
+            }
+          }
+        },
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[1]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2102",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2102",
+            "title": "Standard / Natural duplicate",
+            "sku": "TOTE-STD-NAT",
+            "price": "30.00",
+            "compareAtPrice": "20.00",
+            "inventory": {
+              "quantity": 3,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": " standard ",
+              "Color": "NATURAL"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Assign a unique SKU to each conflicting variant, then re-run the audit to confirm the collision is gone."
+    },
+    {
+      "id": "VARIANT_OPTION_DUPLICATE:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2101:size=standard|color=natural",
+      "ruleId": "VARIANT_OPTION_DUPLICATE",
+      "severity": "high",
+      "category": "Variant integrity",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2101",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote contains 2 variants with the same option combination.",
+      "evidence": [
+        {
+          "label": "Normalized combination",
+          "value": "size=standard|color=natural"
+        },
+        {
+          "label": "Variant IDs",
+          "value": "gid://shopify/ProductVariant/2101, gid://shopify/ProductVariant/2102"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[0]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2101",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2101",
+            "title": "Standard / Natural",
+            "sku": "TOTE-STD-NAT",
+            "price": "28.00",
+            "compareAtPrice": "34.00",
+            "inventory": {
+              "quantity": 14,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Standard",
+              "Color": "Natural"
+            }
+          }
+        },
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[1]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2102",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2102",
+            "title": "Standard / Natural duplicate",
+            "sku": "TOTE-STD-NAT",
+            "price": "30.00",
+            "compareAtPrice": "20.00",
+            "inventory": {
+              "quantity": 3,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": " standard ",
+              "Color": "NATURAL"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Merge or remove the duplicate variant after confirming which inventory, SKU, and price record should remain."
+    },
+    {
+      "id": "VARIANT_OPTION_DUPLICATE:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102:size=standard|color=natural",
+      "ruleId": "VARIANT_OPTION_DUPLICATE",
+      "severity": "high",
+      "category": "Variant integrity",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote contains 2 variants with the same option combination.",
+      "evidence": [
+        {
+          "label": "Normalized combination",
+          "value": "size=standard|color=natural"
+        },
+        {
+          "label": "Variant IDs",
+          "value": "gid://shopify/ProductVariant/2101, gid://shopify/ProductVariant/2102"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[0]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2101",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2101",
+            "title": "Standard / Natural",
+            "sku": "TOTE-STD-NAT",
+            "price": "28.00",
+            "compareAtPrice": "34.00",
+            "inventory": {
+              "quantity": 14,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Standard",
+              "Color": "Natural"
+            }
+          }
+        },
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[1]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2102",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2102",
+            "title": "Standard / Natural duplicate",
+            "sku": "TOTE-STD-NAT",
+            "price": "30.00",
+            "compareAtPrice": "20.00",
+            "inventory": {
+              "quantity": 3,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": " standard ",
+              "Color": "NATURAL"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Merge or remove the duplicate variant after confirming which inventory, SKU, and price record should remain."
+    },
+    {
+      "id": "VARIANT_OPTION_INCOMPLETE:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "ruleId": "VARIANT_OPTION_INCOMPLETE",
+      "severity": "high",
+      "category": "Variant integrity",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote / Large / unknown finish is missing 1 required option value.",
+      "evidence": [
+        {
+          "label": "Missing options",
+          "value": "Color"
+        },
+        {
+          "label": "Declared schema",
+          "value": "Size, Color"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[2]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2103",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2103",
+            "title": "Large / unknown finish",
+            "sku": "",
+            "price": "-4.00",
+            "compareAtPrice": null,
+            "inventory": {
+              "quantity": 0,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Large",
+              "Color": "",
+              "Finish": "Gloss"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Supply a value for every declared product option, or correct the product option schema if the option should not exist."
+    },
+    {
+      "id": "VARIANT_OPTION_SCHEMA_MISMATCH:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "ruleId": "VARIANT_OPTION_SCHEMA_MISMATCH",
+      "severity": "high",
+      "category": "Variant integrity",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote / Large / unknown finish contains option data outside the declared schema.",
+      "evidence": [
+        {
+          "label": "Unknown option names",
+          "value": "Finish"
+        },
+        {
+          "label": "Values outside schema",
+          "value": "None"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[2]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2103",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2103",
+            "title": "Large / unknown finish",
+            "sku": "",
+            "price": "-4.00",
+            "compareAtPrice": null,
+            "inventory": {
+              "quantity": 0,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Large",
+              "Color": "",
+              "Finish": "Gloss"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Align the variant's option names and values with the declared product options, or intentionally update the product schema."
+    },
+    {
+      "id": "VARIANT_OPTION_SCHEMA_MISMATCH:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2104",
+      "ruleId": "VARIANT_OPTION_SCHEMA_MISMATCH",
+      "severity": "high",
+      "category": "Variant integrity",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2104",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote / Large / Sage contains option data outside the declared schema.",
+      "evidence": [
+        {
+          "label": "Unknown option names",
+          "value": "None"
+        },
+        {
+          "label": "Values outside schema",
+          "value": "Color=Sage"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[3]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2104",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2104",
+            "title": "Large / Sage",
+            "sku": "TOTE-L-SAGE",
+            "price": "twenty eight",
+            "compareAtPrice": null,
+            "inventory": {
+              "quantity": 8,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Large",
+              "Color": "Sage"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Align the variant's option names and values with the declared product options, or intentionally update the product schema."
+    },
+    {
+      "id": "MEDIA_ALT_MISSING:product:gid-shopify-product-2001:image:1",
+      "ruleId": "MEDIA_ALT_MISSING",
+      "severity": "medium",
+      "category": "Media",
+      "classification": "deterministic",
+      "affectedEntityType": "image",
+      "affectedEntityId": "product:gid-shopify-product-2001:image:1",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "An image for Everyday Tote has no alt text.",
+      "evidence": [
+        {
+          "label": "Image source",
+          "value": "https://cdn.example.test/everyday-tote.jpg"
+        },
+        {
+          "label": "Raw alt text",
+          "value": null
+        },
+        {
+          "label": "Product status",
+          "value": "active"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].images[0]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "rawValues": {
+            "source": "https://cdn.example.test/everyday-tote.jpg",
+            "altText": "",
+            "position": 1
+          }
+        }
+      ],
+      "recommendedFix": "Write concise alt text that describes the product and meaningful visual details; avoid keyword stuffing."
+    },
+    {
+      "id": "MEDIA_ALT_MISSING:product:gid-shopify-product-2001:image:2",
+      "ruleId": "MEDIA_ALT_MISSING",
+      "severity": "medium",
+      "category": "Media",
+      "classification": "deterministic",
+      "affectedEntityType": "image",
+      "affectedEntityId": "product:gid-shopify-product-2001:image:2",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "An image for Everyday Tote has no alt text.",
+      "evidence": [
+        {
+          "label": "Image source",
+          "value": "https://cdn.example.test/everyday-tote-detail.jpg"
+        },
+        {
+          "label": "Raw alt text",
+          "value": null
+        },
+        {
+          "label": "Product status",
+          "value": "active"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].images[1]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "rawValues": {
+            "source": "https://cdn.example.test/everyday-tote-detail.jpg",
+            "position": 2
+          }
+        }
+      ],
+      "recommendedFix": "Write concise alt text that describes the product and meaningful visual details; avoid keyword stuffing."
+    },
+    {
+      "id": "PRICE_COMPARE_AT_BELOW_PRICE:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102",
+      "ruleId": "PRICE_COMPARE_AT_BELOW_PRICE",
+      "severity": "medium",
+      "category": "Price",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2102",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote / Standard / Natural duplicate has a compare-at price below its selling price.",
+      "evidence": [
+        {
+          "label": "Selling price",
+          "value": 30
+        },
+        {
+          "label": "Compare-at price",
+          "value": 20
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[1]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2102",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2102",
+            "title": "Standard / Natural duplicate",
+            "sku": "TOTE-STD-NAT",
+            "price": "30.00",
+            "compareAtPrice": "20.00",
+            "inventory": {
+              "quantity": 3,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": " standard ",
+              "Color": "NATURAL"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Correct or remove the compare-at price. A raw zero is treated as an absent sentinel and is not flagged by this rule."
+    },
+    {
+      "id": "SKU_MISSING:product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "ruleId": "SKU_MISSING",
+      "severity": "medium",
+      "category": "SKU",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2001:variant:gid-shopify-productvariant-2103",
+      "productId": "product:gid-shopify-product-2001",
+      "productTitle": "Everyday Tote",
+      "message": "Everyday Tote / Large / unknown finish has no SKU.",
+      "evidence": [
+        {
+          "label": "Raw SKU",
+          "value": null
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[0].variants[2]",
+          "sourceProductId": "gid://shopify/Product/2001",
+          "sourceVariantId": "gid://shopify/ProductVariant/2103",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2103",
+            "title": "Large / unknown finish",
+            "sku": "",
+            "price": "-4.00",
+            "compareAtPrice": null,
+            "inventory": {
+              "quantity": 0,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {
+              "Size": "Large",
+              "Color": "",
+              "Finish": "Gloss"
+            }
+          }
+        }
+      ],
+      "recommendedFix": "Decide whether this variant should participate in SKU-based operations; if so, assign a stable unique SKU."
+    },
+    {
+      "id": "SKU_MISSING:product:gid-shopify-product-2002:variant:gid-shopify-productvariant-2201",
+      "ruleId": "SKU_MISSING",
+      "severity": "medium",
+      "category": "SKU",
+      "classification": "deterministic",
+      "affectedEntityType": "variant",
+      "affectedEntityId": "product:gid-shopify-product-2002:variant:gid-shopify-productvariant-2201",
+      "productId": "product:gid-shopify-product-2002",
+      "productTitle": "Stoneware Pitcher",
+      "message": "Stoneware Pitcher / Default has no SKU.",
+      "evidence": [
+        {
+          "label": "Raw SKU",
+          "value": null
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[1].variants[0]",
+          "sourceProductId": "gid://shopify/Product/2002",
+          "sourceVariantId": "gid://shopify/ProductVariant/2201",
+          "rawValues": {
+            "sourceVariantId": "gid://shopify/ProductVariant/2201",
+            "title": "Default",
+            "sku": null,
+            "price": "52.00",
+            "compareAtPrice": null,
+            "inventory": {
+              "quantity": 4,
+              "tracked": true,
+              "policy": "deny"
+            },
+            "available": true,
+            "options": {}
+          }
+        }
+      ],
+      "recommendedFix": "Decide whether this variant should participate in SKU-based operations; if so, assign a stable unique SKU."
+    },
+    {
+      "id": "MEDIA_PRODUCT_NO_IMAGE:product:gid-shopify-product-2003",
+      "ruleId": "MEDIA_PRODUCT_NO_IMAGE",
+      "severity": "low",
+      "category": "Media",
+      "classification": "deterministic",
+      "affectedEntityType": "product",
+      "affectedEntityId": "product:gid-shopify-product-2003",
+      "productId": "product:gid-shopify-product-2003",
+      "productTitle": "Holiday Garland — archive candidate",
+      "message": "Holiday Garland — archive candidate has no product images.",
+      "evidence": [
+        {
+          "label": "Image count",
+          "value": 0
+        },
+        {
+          "label": "Product status",
+          "value": "draft"
+        }
+      ],
+      "provenance": [
+        {
+          "sourceKind": "fixture",
+          "sourceName": "messy-store.json",
+          "jsonPath": "$.products[2]",
+          "sourceProductId": "gid://shopify/Product/2003",
+          "rawValues": {
+            "sourceProductId": "gid://shopify/Product/2003",
+            "handle": "holiday-garland-archive",
+            "title": "Holiday Garland — archive candidate",
+            "description": "A seasonal listing retained as a draft after last year's campaign.",
+            "status": "draft",
+            "vendor": "Market Street Goods",
+            "productType": "Decor",
+            "tags": [
+              "seasonal"
+            ],
+            "options": [],
+            "variants": [
+              {
+                "sourceVariantId": "gid://shopify/ProductVariant/2301",
+                "title": "Default",
+                "sku": "GARLAND-6FT",
+                "price": "36.00",
+                "compareAtPrice": 0,
+                "inventory": {
+                  "quantity": 0,
+                  "tracked": true,
+                  "policy": "deny"
+                },
+                "available": false,
+                "options": {}
+              }
+            ],
+            "images": []
+          }
+        }
+      ],
+      "recommendedFix": "Add at least one accurate product image and re-run the audit. Draft or archived items can be addressed before activation."
+    }
+  ]
+}

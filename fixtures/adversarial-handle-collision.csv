@@ -1,0 +1,3 @@
+Handle,Title,Status,Product ID,Variant ID,Variant SKU,Variant Price,Image Src,Image Alt Text
+same-handle,First Product,active,adversarial-product-one,adversarial-handle-v1,HANDLE-ONE,10.00,https://cdn.example.test/first.jpg,First product
+same-handle,Second Product,active,adversarial-product-two,adversarial-handle-v2,HANDLE-TWO,12.00,https://cdn.example.test/second.jpg,Second product

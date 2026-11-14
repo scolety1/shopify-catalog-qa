@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "catalog-qa.catalog.v1",
+  "name": "Edge Cases",
+  "products": [
+    {
+      "sourceProductId": "edge-1001",
+      "handle": "cafetiere-edition-limitee",
+      "title": "Cafetière — Édition limitée ☕",
+      "description": "A unicode-rich title and a long but valid description. This fixture intentionally keeps optional merchandising fields blank while preserving complete operational data for the fields audited in this mission.",
+      "status": "active",
+      "vendor": "Atelier du Matin",
+      "productType": "Coffee Makers",
+      "category": null,
+      "tags": [],
+      "collections": [],
+      "options": [],
+      "variants": [
+        {
+          "sourceVariantId": "edge-1101",
+          "title": "Default",
+          "sku": "CAFÉ-001",
+          "barcode": null,
+          "price": "89.00",
+          "compareAtPrice": 0,
+          "inventory": { "quantity": 0, "tracked": true, "policy": "deny" },
+          "available": false,
+          "options": {}
+        }
+      ],
+      "images": [
+        { "source": "https://cdn.example.test/cafetiere.jpg", "altText": "Polished steel cafetière with walnut handle", "position": 1 }
+      ]
+    },
+    {
+      "sourceProductId": "edge-1002",
+      "handle": "modular-shirt",
+      "title": "Modular Overshirt",
+      "description": "A product with the maximum familiar three-option shape and legitimate repeated prices across variants.",
+      "status": "active",
+      "vendor": "Edge Workshop",
+      "productType": "Shirts",
+      "options": [
+        { "name": "Size", "values": ["S", "M"] },
+        { "name": "Color", "values": ["Black", "Sand"] },
+        { "name": "Material", "values": ["Cotton", "Linen"] }
+      ],
+      "variants": [
+        {
+          "sourceVariantId": "edge-1201",
+          "title": "S / Black / Cotton",
+          "sku": "SHIRT-S-BLK-COT",
+          "price": 120,
+          "compareAtPrice": null,
+          "inventory": { "quantity": 0, "tracked": false, "policy": "continue" },
+          "available": true,
+          "options": { "Size": "S", "Color": "Black", "Material": "Cotton" }
+        },
+        {
+          "sourceVariantId": "edge-1202",
+          "title": "S / Sand / Linen",
+          "sku": "SHIRT-S-SND-LIN",
+          "price": 120,
+          "compareAtPrice": null,
+          "inventory": { "quantity": 0, "tracked": false, "policy": "continue" },
+          "available": true,
+          "options": { "Size": "S", "Color": "Sand", "Material": "Linen" }
+        },
+        {
+          "sourceVariantId": "edge-1203",
+          "title": "M / Black / Linen",
+          "sku": "SHIRT-M-BLK-LIN",
+          "price": 120,
+          "compareAtPrice": 0,
+          "inventory": { "quantity": 2, "tracked": true, "policy": "deny" },
+          "available": true,
+          "options": { "Size": "M", "Color": "Black", "Material": "Linen" }
+        }
+      ],
+      "images": [
+        { "source": "https://cdn.example.test/modular-shirt.jpg", "altText": "Modular Overshirt in black cotton", "position": 1 }
+      ]
+    },
+    {
+      "sourceProductId": "edge-1003",
+      "handle": "future-release-swatch",
+      "title": "Future Release Swatch",
+      "description": "",
+      "status": "draft",
+      "vendor": null,
+      "productType": null,
+      "category": null,
+      "tags": [],
+      "options": [],
+      "variants": [
+        {
+          "sourceVariantId": "edge-1301",
+          "title": "Default",
+          "sku": "SWATCH-FUTURE",
+          "price": "0.00",
+          "compareAtPrice": null,
+          "inventory": { "quantity": null, "tracked": null, "policy": null },
+          "available": null,
+          "options": {}
+        }
+      ],
+      "images": [
+        { "source": "https://cdn.example.test/future-swatch.jpg", "altText": "Material swatch for an unreleased product", "position": 1 }
+      ]
+    }
+  ]
+}
