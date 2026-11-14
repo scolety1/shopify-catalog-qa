@@ -2,6 +2,14 @@
 
 A browser-local tool for importing Shopify-style catalogs, explaining deterministic quality findings, and comparing a later import with a saved baseline. No store connection, credentials, uploads, or automatic store changes.
 
+## Review in 60 seconds
+
+**Decision:** a disappearing finding is not sufficient evidence that a catalog issue was fixed. Stable identity and explicit uncertainty prevent misleading before/after reports.
+
+- Read [identity and comparison regressions](tests/identity-comparison.test.ts), then the [comparison implementation](src/audit/comparison.ts).
+- Reproduce the checks with `npm test` and `npm run evaluate`: publication verification recorded 79 passing tests and 124 synthetic evaluation cases. See [CI runs](https://github.com/scolety1/shopify-catalog-qa/actions).
+- Try the bundled Messy Store and Healthy Store catalogs. This demonstrates local QA, not a live Shopify integration or measured merchant impact.
+
 ## What works today
 
 - CSV and versioned JSON import with field provenance and explicit diagnostics.
