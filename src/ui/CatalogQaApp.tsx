@@ -358,14 +358,25 @@ export function ComparisonDashboard({
 
 export function CatalogQaApp({
   downloadHandler = browserDownload,
-  storage = typeof window === "undefined" ? null : window.localStorage,
+  storage: suppliedStorage,
 }: CatalogQaAppProps) {
-  const initialWorkflow = useMemo(() => loadWorkflowRecords(storage), [storage]);
+  const requestedStorage = useMemo(() => {
+    if (suppliedStorage !== undefined) return suppliedStorage;
+    try {
+      return typeof window === "undefined" ? null : window.localStorage;
+    } catch {
+      return null;
+    }
+  }, [suppliedStorage]);
+  const initialWorkflow = useMemo(() => loadWorkflowRecords(requestedStorage), [requestedStorage]);
+  // Never overwrite previously saved records if their initial read failed.
+  const storage = initialWorkflow.unavailable ? null : requestedStorage;
+  const sessionOnlyDiagnostic = "Local workflow storage is unavailable. Changes are kept in this session only; existing saved data was not changed.";
   const [activeFixture, setActiveFixture] = useState<FixtureId | "upload">("messy");
   const [importResult, setImportResult] = useState<ImportResult>(initialImport);
   const [auditedAt, setAuditedAt] = useState(() => new Date().toISOString());
   const [workflowRecords, setWorkflowRecords] = useState<WorkflowRecord[]>(initialWorkflow.records);
-  const [workflowDiagnostic, setWorkflowDiagnostic] = useState(initialWorkflow.diagnostic ?? "");
+  const [workflowDiagnostic, setWorkflowDiagnostic] = useState(initialWorkflow.diagnostic ?? (storage ? "" : sessionOnlyDiagnostic));
   const [severityFilter, setSeverityFilter] = useState<Severity | "all">("all");
   const [workflowFilter, setWorkflowFilter] = useState<WorkflowStatus | "all">("all");
   const [ruleFilter, setRuleFilter] = useState("all");
@@ -497,7 +508,7 @@ export function CatalogQaApp({
   function persistWorkflow(next: WorkflowRecord[]) {
     setWorkflowRecords(next);
     saveWorkflowRecords(storage, next);
-    setWorkflowDiagnostic("");
+    setWorkflowDiagnostic(storage ? "" : sessionOnlyDiagnostic);
   }
 
   function setFindingWorkflow(status: WorkflowStatus) {
@@ -518,7 +529,9 @@ export function CatalogQaApp({
     clearWorkflowRecords(storage);
     setWorkflowRecords([]);
     setNoteDrafts({});
-    setWorkflowDiagnostic("Local workflow data cleared. Imported catalogs were never stored.");
+    setWorkflowDiagnostic(storage
+      ? "Local workflow data cleared. Imported catalogs were never stored."
+      : "Session workflow data cleared. Local storage remains unavailable; existing saved data was not changed.");
   }
 
   function downloadReport(format: "json" | "html") {
