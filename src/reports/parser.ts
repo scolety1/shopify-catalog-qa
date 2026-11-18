@@ -137,6 +137,40 @@ function validateRun(run: unknown): run is AuditRun {
     && isRecord(run.source);
 }
 
+// Validate fields consumed by legacy migration before interpreting untrusted JSON.
+function canUpgradeLegacyReport(report: Record<string, unknown>): boolean {
+  const app = report.application;
+  const diagnostics = report.importDiagnostics;
+  return typeof report.generatedAt === "string"
+    && isRecord(app)
+    && typeof app.version === "string"
+    && typeof app.auditEngineVersion === "string"
+    && isRecord(report.source)
+    && typeof report.source.fingerprint === "string"
+    && isRecord(report.catalogSummary)
+    && isRecord(diagnostics)
+    && isRecord(diagnostics.summary)
+    && Array.isArray(diagnostics.items)
+    && Array.isArray(diagnostics.extensionColumns)
+    && Array.isArray(diagnostics.ignoredColumns)
+    && Array.isArray(report.rulesExecuted)
+    && Array.isArray(report.findings)
+    && report.findings.every((finding: unknown) => isRecord(finding)
+      && typeof finding.id === "string"
+      && typeof finding.ruleId === "string"
+      && typeof finding.affectedEntityId === "string"
+      && typeof finding.affectedEntityType === "string"
+      && ["catalog", "product", "variant", "image"].includes(finding.affectedEntityType)
+      && Array.isArray(finding.provenance)
+      && finding.provenance.every((source: unknown) => isRecord(source)
+        && (source.sourceProductId == null || typeof source.sourceProductId === "string")
+        && (source.sourceVariantId == null || typeof source.sourceVariantId === "string"))
+      && Array.isArray(finding.evidence)
+      && finding.evidence.every((entry: unknown) => isRecord(entry) && typeof entry.label === "string")
+      && (finding.logicalEntity == null || (isRecord(finding.logicalEntity) && typeof finding.logicalEntity.key === "string"))
+      && (finding.logicalKey == null || typeof finding.logicalKey === "string"));
+}
+
 export function parseBaselineReport(input: string | unknown): BaselineReportResult {
   let parsed = input;
   if (typeof input === "string") {
@@ -175,7 +209,7 @@ export function parseBaselineReport(input: string | unknown): BaselineReportResu
       : { ok: false, diagnostics: [{ code: "REPORT_SHAPE_INVALID", message: "Version 2 report is missing its complete auditRun.", path: "$.auditRun" }] };
   }
   if (parsed.schemaVersion === "catalog-qa.audit-report.v1") {
-    if (!Array.isArray(parsed.findings) || !isRecord(parsed.source) || !isRecord(parsed.catalogSummary)) {
+    if (!canUpgradeLegacyReport(parsed)) {
       return {
         ok: false,
         diagnostics: [{
@@ -185,11 +219,15 @@ export function parseBaselineReport(input: string | unknown): BaselineReportResu
         }],
       };
     }
-    return {
-      ok: true,
-      run: upgradeMission2(parsed as unknown as AuditReportV1),
-      upgradedFrom: "catalog-qa.audit-report.v1",
-    };
+    try {
+      return {
+        ok: true,
+        run: upgradeMission2(parsed as unknown as AuditReportV1),
+        upgradedFrom: "catalog-qa.audit-report.v1",
+      };
+    } catch {
+      return { ok: false, diagnostics: [{ code: "REPORT_SHAPE_INVALID", message: "Legacy report contains data that cannot be migrated safely.", path: "$" }] };
+    }
   }
   return {
     ok: false,
