@@ -15,6 +15,7 @@ export interface StorageLike {
 export interface WorkflowLoadResult {
   records: WorkflowRecord[];
   diagnostic?: string;
+  unavailable?: boolean;
 }
 
 function isWorkflowRecord(value: unknown): value is WorkflowRecord {
@@ -36,7 +37,12 @@ function isWorkflowRecord(value: unknown): value is WorkflowRecord {
 
 export function loadWorkflowRecords(storage: StorageLike | null | undefined): WorkflowLoadResult {
   if (!storage) return { records: [] };
-  const raw = storage.getItem(WORKFLOW_STORAGE_KEY);
+  let raw: string | null;
+  try {
+    raw = storage.getItem(WORKFLOW_STORAGE_KEY);
+  } catch {
+    return { records: [], unavailable: true, diagnostic: "Local workflow storage could not be read. Changes are kept in this session only; existing saved data was not changed." };
+  }
   if (!raw) return { records: [] };
   try {
     const parsed = JSON.parse(raw) as Partial<WorkflowStore>;
